@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <div class="row">
   <div class="col-md-4">
     <div class="well well-3d">
@@ -187,19 +188,19 @@
 
       <div class="btn-group mt-10 pull-right">
         <!-- Go up in the navigation -->
-        <button class="btn btn-default" ng-click="navigateUp()"
+        <!-- <button class="btn btn-default" ng-click="navigateUp()"
                 uib-tooltip="{{ 'document.navigation_up' | translate }}"
                 tooltip-append-to-body="true"
                 ng-if="navigatedTag">
           <span class="fas fa-chevron-up"></span>
-        </button>
+        </button> -->
         <!-- Toggle navigation -->
-        <button class="btn btn-default" ng-click="navigationToggle()"
+        <!-- <button class="btn btn-default" ng-click="navigationToggle()"
                 ng-class="{ active: navigationEnabled }"
                 uib-tooltip="{{ 'document.toggle_navigation' | translate }}"
                 tooltip-append-to-body="true">
           <span class="far" ng-class="{ 'fa-folder-open': navigationEnabled, 'fa-folder': !navigationEnabled }"></span>
-        </button>
+        </button> -->
         <!-- Add a tag here -->
         <button class="btn btn-primary btn-add-tag"
                 uib-tooltip="{{ 'tag.new_tag' | translate }}"
@@ -255,9 +256,15 @@
             <span class="fas fa-random" ng-if="document.active_route" uib-tooltip="{{ document.current_step_name }}"></span>
             <a href="#/document/view/{{ document.id }}" target="_blank" ng-click="$event.stopPropagation()"><span class="fas fa-link"></span></a>
 
-            <div class="pull-right text-muted small" uib-tooltip="{{ 'document.last_updated' | translate: { date: document.update_date } }}">
+            <!-- <div class="pull-right text-muted small" uib-tooltip="{{ 'document.last_updated' | translate: { date: document.update_date } }}">
               {{ document.title }}
-            </div>
+            </div> -->
+            <select name="application-select" onchange="$('#myform').submit();">
+              <option value="">--Application Status--</option> 
+              <option value="Review">Review</option>
+              <option value="Accepted">Accepted</option>
+              <option value="Rejected">Rejected</option>  
+            </select>
 
             <div class="tags small">
               <span class="label label-info" ng-repeat="tag in document.tags" ng-style="{ 'background': tag.color }" invert-text-color="{{ tag.color }}" add-space-between>
