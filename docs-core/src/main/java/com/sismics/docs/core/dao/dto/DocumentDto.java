@@ -116,7 +116,6 @@ public class DocumentDto {
      */
     private Integer status;
 
-
     public String getId() {
         return id;
     }
