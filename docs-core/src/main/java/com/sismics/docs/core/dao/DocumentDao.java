@@ -33,6 +33,7 @@ public class DocumentDao {
         // Create the UUID
         document.setId(UUID.randomUUID().toString());
         document.setUpdateDate(new Date());
+        document.setStatus(0);
         
         // Create the document
         EntityManager em = ThreadLocalContext.get().getEntityManager();
