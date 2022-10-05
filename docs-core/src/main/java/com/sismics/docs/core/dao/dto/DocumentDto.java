@@ -111,6 +111,12 @@ public class DocumentDto {
      */
     private String highlight;
 
+    /**
+     * Applicant Status
+     */
+    private int status;
+
+
     public String getId() {
         return id;
     }
@@ -280,5 +286,13 @@ public class DocumentDto {
     public DocumentDto setHighlight(String highlight) {
         this.highlight = highlight;
         return this;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
