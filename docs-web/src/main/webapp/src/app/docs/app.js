@@ -37,6 +37,16 @@ angular.module('docs',
         }
       }
     })
+    // .state('dashboard', {
+    //   url: '/dashboard',
+    //   abstract: true,
+    //   views: {
+    //     'page': {
+    //       templateUrl: 'partial/docs/dashboard.html',
+    //       controller: 'Dashboard'
+    //     }
+    //   }
+    // })
     .state('tag', {
       url: '/tag',
       abstract: true,
