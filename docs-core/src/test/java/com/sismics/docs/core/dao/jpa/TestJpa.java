@@ -18,7 +18,7 @@ import java.util.Date;
  */
 public class TestJpa extends BaseTransactionalTest {
     @Test
-    public void testJpa() throws Exception {
+    public void testJpa1() throws Exception {
         // Create a user
         UserDao userDao = new UserDao();
         User user = new User();
@@ -38,8 +38,10 @@ public class TestJpa extends BaseTransactionalTest {
 
         // Authenticate using the database
         Assert.assertNotNull(new InternalAuthenticationHandler().authenticate("username", "12345678"));
+    }
 
-
+    @Test
+    public void testJpa2() throws Exception {
         // Create a new document
         DocumentDao docDao = new DocumentDao();
         Document doc = new Document();
