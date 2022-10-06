@@ -88,7 +88,7 @@ public class DocumentDao {
         }
 
         EntityManager em = ThreadLocalContext.get().getEntityManager();
-        StringBuilder sb = new StringBuilder("select distinct d.DOC_ID_C, d.DOC_TITLE_C, d.DOC_DESCRIPTION_C, d.DOC_SUBJECT_C, d.DOC_IDENTIFIER_C, d.DOC_PUBLISHER_C, d.DOC_FORMAT_C, d.DOC_SOURCE_C, d.DOC_TYPE_C, d.DOC_COVERAGE_C, d.DOC_RIGHTS_C, d.DOC_CREATEDATE_D, d.DOC_UPDATEDATE_D, d.DOC_LANGUAGE_C, ");
+        StringBuilder sb = new StringBuilder("select distinct d.DOC_ID_C, d.DOC_TITLE_C, d.DOC_DESCRIPTION_C, d.DOC_SUBJECT_C, d.DOC_IDENTIFIER_C, d.DOC_PUBLISHER_C, d.DOC_FORMAT_C, d.DOC_SOURCE_C, d.DOC_TYPE_C, d.DOC_COVERAGE_C, d.DOC_RIGHTS_C, d.DOC_CREATEDATE_D, d.DOC_UPDATEDATE_D, d.DOC_LANGUAGE_C, d.DOC_STATUS, ");
         sb.append(" (select count(s.SHA_ID_C) from T_SHARE s, T_ACL ac where ac.ACL_SOURCEID_C = d.DOC_ID_C and ac.ACL_TARGETID_C = s.SHA_ID_C and ac.ACL_DELETEDATE_D is null and s.SHA_DELETEDATE_D is null) shareCount, ");
         sb.append(" (select count(f.FIL_ID_C) from T_FILE f where f.FIL_DELETEDATE_D is null and f.FIL_IDDOC_C = d.DOC_ID_C) fileCount, ");
         sb.append(" u.USE_USERNAME_C ");
@@ -108,6 +108,7 @@ public class DocumentDao {
         
         DocumentDto documentDto = new DocumentDto();
         int i = 0;
+        
         documentDto.setId((String) o[i++]);
         documentDto.setTitle((String) o[i++]);
         documentDto.setDescription((String) o[i++]);
@@ -122,6 +123,7 @@ public class DocumentDao {
         documentDto.setCreateTimestamp(((Timestamp) o[i++]).getTime());
         documentDto.setUpdateTimestamp(((Timestamp) o[i++]).getTime());
         documentDto.setLanguage((String) o[i++]);
+        documentDto.setStatus(Integer.valueOf((String) o[i++]));
         documentDto.setShared(((Number) o[i++]).intValue() > 0);
         documentDto.setFileCount(((Number) o[i++]).intValue());
         documentDto.setCreator((String) o[i]);
@@ -217,6 +219,7 @@ public class DocumentDao {
         documentDb.setCreateDate(document.getCreateDate());
         documentDb.setLanguage(document.getLanguage());
         documentDb.setFileId(document.getFileId());
+        documentDb.setStatus(document.getStatus());
         documentDb.setUpdateDate(new Date());
         
         // Create audit log
