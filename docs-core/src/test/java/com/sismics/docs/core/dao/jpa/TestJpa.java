@@ -43,13 +43,13 @@ public class TestJpa extends BaseTransactionalTest {
         // Create a new document
         DocumentDao docDao = new DocumentDao();
         Document doc = new Document();
-        Assert.assertEquals(0, doc.getStatus());
+        Assert.assertEquals(Integer.valueOf(0), doc.getStatus());
         doc.setTitle("My new document");
         doc.setDescription("My description");
         doc.setCreateDate(new Date());
         doc.setLanguage("eng");
         doc.setUserId("admin");
-        doc.setStatus(2);
+        doc.setStatus(Integer.valueOf(2));
         String docId = docDao.create(doc, "admin");
 
         TransactionUtil.commit();
@@ -57,6 +57,6 @@ public class TestJpa extends BaseTransactionalTest {
         // Search a document by its ID and make sure the status is correct
         doc = docDao.getById(docId);
         Assert.assertNotNull(doc);
-        Assert.assertEquals(2, doc.getStatus());
+        Assert.assertEquals(Integer.valueOf(2), doc.getStatus());
     }
 }

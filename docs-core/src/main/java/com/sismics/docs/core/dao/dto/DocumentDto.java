@@ -288,6 +288,9 @@ public class DocumentDto {
     }
 
     public Integer getStatus() {
+        if (status == null) {
+            status = Integer.valueOf(0);
+        }
         return status;
     }
 
