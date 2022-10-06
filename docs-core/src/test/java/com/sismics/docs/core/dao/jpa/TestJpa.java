@@ -48,9 +48,9 @@ public class TestJpa extends BaseTransactionalTest {
         doc.setDescription("My description");
         doc.setCreateDate(new Date());
         doc.setLanguage("eng");
-        doc.setUserId("me");
+        doc.setUserId("admin");
         doc.setStatus(2);
-        String docId = docDao.create(doc, "me");
+        String docId = docDao.create(doc, "admin");
 
         TransactionUtil.commit();
 
