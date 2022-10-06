@@ -118,6 +118,12 @@ public class Document implements Loggable {
      */
     @Column(name = "DOC_DELETEDATE_D")
     private Date deleteDate;
+
+    /**
+     * Status of applicant.
+     */
+    @Column(name = "DOC_STATUS")
+    private int status;
     
     public String getId() {
         return id;
@@ -255,6 +261,14 @@ public class Document implements Loggable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

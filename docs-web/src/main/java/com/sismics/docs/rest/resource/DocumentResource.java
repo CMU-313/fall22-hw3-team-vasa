@@ -173,7 +173,8 @@ public class DocumentResource extends BaseResource {
                 .add("update_date", documentDto.getUpdateTimestamp())
                 .add("language", documentDto.getLanguage())
                 .add("shared", documentDto.getShared())
-                .add("file_count", documentDto.getFileCount());
+                .add("file_count", documentDto.getFileCount())
+                .add("status", documentDto.getStatus());
 
         List<TagDto> tagDtoList = null;
         if (principal.isAnonymous()) {
@@ -734,7 +735,8 @@ public class DocumentResource extends BaseResource {
             @FormParam("metadata_id") List<String> metadataIdList,
             @FormParam("metadata_value") List<String> metadataValueList,
             @FormParam("language") String language,
-            @FormParam("create_date") String createDateStr) {
+            @FormParam("create_date") String createDateStr,
+            @FormParam("status") String status) {
         if (!authenticate()) {
             throw new ForbiddenClientException();
         }

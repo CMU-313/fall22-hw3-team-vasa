@@ -110,6 +110,11 @@ public class DocumentDto {
      * Search highlight.
      */
     private String highlight;
+    
+    /**
+     * Applicant status
+     */
+    private Integer status;
 
     public String getId() {
         return id;
@@ -279,6 +284,18 @@ public class DocumentDto {
 
     public DocumentDto setHighlight(String highlight) {
         this.highlight = highlight;
+        return this;
+    }
+
+    public Integer getStatus() {
+        if (status == null) {
+            status = Integer.valueOf(0);
+        }
+        return status;
+    }
+
+    public DocumentDto setStatus(Integer status) {
+        this.status = status;
         return this;
     }
 }
