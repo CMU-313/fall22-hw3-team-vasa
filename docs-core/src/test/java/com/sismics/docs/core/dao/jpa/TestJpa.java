@@ -42,7 +42,7 @@ public class TestJpa extends BaseTransactionalTest {
 
     @Test
     public void testJpa2() throws Exception {
-        // Create a new document
+        // Create a new document with status set to 2
         DocumentDao docDao = new DocumentDao();
         Document doc = new Document();
         Assert.assertEquals(Integer.valueOf(0), doc.getStatus());
@@ -56,9 +56,30 @@ public class TestJpa extends BaseTransactionalTest {
 
         TransactionUtil.commit();
 
-        // Search a document by its ID and make sure the status is correct
+        // Search the document by its ID and make sure the status is 2
         doc = docDao.getById(docId);
         Assert.assertNotNull(doc);
         Assert.assertEquals(Integer.valueOf(2), doc.getStatus());
+    }
+
+    @Test
+    public void testJpa3() throws Exception {
+        // Create a new document without setting status
+        DocumentDao docDao = new DocumentDao();
+        Document doc = new Document();
+        Assert.assertEquals(Integer.valueOf(0), doc.getStatus());
+        doc.setTitle("My new document");
+        doc.setDescription("My description");
+        doc.setCreateDate(new Date());
+        doc.setLanguage("eng");
+        doc.setUserId("admin");
+        String docId = docDao.create(doc, "admin");
+
+        TransactionUtil.commit();
+
+        // Search the document by its ID and make sure the status is 0
+        doc = docDao.getById(docId);
+        Assert.assertNotNull(doc);
+        Assert.assertEquals(Integer.valueOf(0), doc.getStatus());
     }
 }
