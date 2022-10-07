@@ -231,7 +231,7 @@
         <thead>
         <tr>
           <th class="col-xs-6" ng-click="sortDocuments(1)">{{ 'document.title' | translate }} <span class="fas fa-chevron-{{ sortColumn == 1 ? (asc ? 'down' : 'up') : '' }}"></span></th>
-          <th class="col-xs-3" ng-click="sortDocuments(3)">{{ 'document.creation_date' | translate }} <span class="fas fa-chevron-{{ sortColumn == 3 ? (asc ? 'down' : 'up') : '' }}"></span></th>
+          <th class="col-xs-3" ng-click="sortDocuments(3)">{{ 'document.subject' | translate }} <span class="fas fa-chevron-{{ sortColumn == 3 ? (asc ? 'down' : 'up') : '' }}"></span></th>
         </tr>
         </thead>
         <tbody>
@@ -258,10 +258,10 @@
             <!--Added drop down for the application status-->
             <div class="pull-right text-muted small" uib-tooltip="{{ 'document.last_updated' | translate: { date: document.update_date } }}">
               <select name="application-select" onchange="$('#myform').submit();">
-                <option value="">{{ document.status }}</option> 
-                <option value="0">Review</option>
-                <option value="1">Accepted</option>
-                <option value="2">Rejected</option>  
+                <option value="">{{ document.language}}</option> 
+                <option value="Review">Review</option>
+                <option value="Accepted">Accept</option>
+                <option value="Rejected">Reject</option>  
               </select>
 
 
