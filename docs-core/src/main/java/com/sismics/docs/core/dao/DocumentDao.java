@@ -30,7 +30,7 @@ public class DocumentDao {
      * @return New ID
      */
     public String create(Document document, String userId) {
-        // Create the UUID
+        // Create the UUID with status
         document.setId(UUID.randomUUID().toString());
         document.setUpdateDate(new Date());
         document.setStatus(document.getStatus());
@@ -87,6 +87,7 @@ public class DocumentDao {
             return null;
         }
 
+        // New SQL query that selects the status as well
         EntityManager em = ThreadLocalContext.get().getEntityManager();
         StringBuilder sb = new StringBuilder("select distinct d.DOC_ID_C, d.DOC_TITLE_C, d.DOC_DESCRIPTION_C, d.DOC_SUBJECT_C, d.DOC_IDENTIFIER_C, d.DOC_PUBLISHER_C, d.DOC_FORMAT_C, d.DOC_SOURCE_C, d.DOC_TYPE_C, d.DOC_COVERAGE_C, d.DOC_RIGHTS_C, d.DOC_CREATEDATE_D, d.DOC_UPDATEDATE_D, d.DOC_LANGUAGE_C, d.DOC_STATUS, ");
         sb.append(" (select count(s.SHA_ID_C) from T_SHARE s, T_ACL ac where ac.ACL_SOURCEID_C = d.DOC_ID_C and ac.ACL_TARGETID_C = s.SHA_ID_C and ac.ACL_DELETEDATE_D is null and s.SHA_DELETEDATE_D is null) shareCount, ");
@@ -205,7 +206,7 @@ public class DocumentDao {
         q.setParameter("id", document.getId());
         Document documentDb = q.getSingleResult();
 
-        // Update the document
+        // Update the document, with status flag
         documentDb.setTitle(document.getTitle());
         documentDb.setDescription(document.getDescription());
         documentDb.setSubject(document.getSubject());
