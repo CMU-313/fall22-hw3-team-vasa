@@ -11,6 +11,7 @@ Teedy is an open source, lightweight document management system for individuals 
 ![New!](https://teedy.io/img/laptop-demo.png?20180301)
 
 # Features
+- OUR NEW FEATURE: The Document homepage allows a reviewer to manage applications and their status (in review, accepted, rejected) via a dropdown. This information is stored in the database for that application. Initially, we attempted to make a new database table for applicants, but instead we added a new column to the existing Document table (to denote the status of the application).
 
 - Responsive user interface
 - Optical character recognition
@@ -121,6 +122,24 @@ After successfully building Teedy from source, you can launch a Teedy instance b
 cd docs-web
 mvn jetty:run
 ```
+
+## Testing Steps
+After successfully building Teedy from source, run the following command from the root directory to run all of the tests:
+```console
+mvn test
+```
+
+To run a single test class (ex. TestJpa), run the following command from the root directory:
+```console
+mvn -Dtest=TestJpa -DfailIfNoTests=false test
+```
+
+## Quality Assurance
+- Have descriptive commit messages 
+- Make small pull requests with descriptive comments on the change's purpose
+- Write and run automated tests on a separate branch before merging to the main branch
+- As a reviewer, pull the code on your machine and run the project and tests locally
+- Before merging to main, the entire team should review and approve the pull request
 
 **The default admin password is "admin". Don't forget to change it before going to production.**
 
