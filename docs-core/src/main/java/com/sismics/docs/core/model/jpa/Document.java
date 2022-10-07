@@ -38,7 +38,7 @@ public class Document implements Loggable {
     /**
      * Language (ISO 639-9).
      */
-    @Column(name = "DOC_LANGUAGE_C", nullable = false, length = 3)
+    @Column(name = "DOC_LANGUAGE_C", nullable = false, length = 7)
     private String language;
     
     /**

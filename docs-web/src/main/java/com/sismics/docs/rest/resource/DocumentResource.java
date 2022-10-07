@@ -743,7 +743,7 @@ public class DocumentResource extends BaseResource {
         
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
-        language = ValidationUtil.validateLength(language, "language", 3, 7, false);
+        language = ValidationUtil.validateLength(language, "language", 3, 20, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
@@ -754,9 +754,9 @@ public class DocumentResource extends BaseResource {
         coverage = ValidationUtil.validateLength(coverage, "coverage", 0, 100, true);
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
-        if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
-            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
-        }
+        // if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
+        //     throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
+        // }
 
         // Create the document
         Document document = new Document();
